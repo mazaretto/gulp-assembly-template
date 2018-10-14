@@ -9,6 +9,7 @@ var gulp = require('gulp'),
     pngquant = require('imagemin-pngquant'),
     babel = require('gulp-babel'),
     uglify = require('gulp-uglify'),
+    rigger = require('gulp-rigger'),
     browserSync = require("browser-sync"),
     reload = browserSync.reload;
 
@@ -50,6 +51,7 @@ var path = {
 
 gulp.task('html:build', function() {
     gulp.src(path.src.html)
+        .pipe(rigger())
         .pipe(gulp.dest(path.build.html))
         .pipe(reload({stream:true}));
 });
